@@ -118,6 +118,19 @@ gulp.task('build', ['jshint', 'html', 'images', 'fonts', 'extras'], function () 
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
+gulp.task('deploy', function () {
+  gulp.src('dist/**/*')
+    .pipe($.s3(
+      {
+        key    : process.env.AWS_ACCESS_KEY_ID,
+        secret : process.env.AWS_SECRET_ACCESS_KEY,
+        region : 'eu-west-1',
+        bucket : 'jockangiftersig.se'
+      },
+      { /*headers: {'Cache-Control': 'max-age=315360000, no-transform, public'}*/ }
+    ));
+});
+
 gulp.task('default', ['clean'], function () {
   gulp.start('build');
 });
