@@ -120,6 +120,7 @@ gulp.task('build', ['jshint', 'html', 'images', 'fonts', 'extras'], function () 
 
 gulp.task('deploy', function () {
   gulp.src('dist/**/*')
+    .pipe($.gzip())
     .pipe($.s3(
       {
         key    : process.env.AWS_ACCESS_KEY_ID,
@@ -127,7 +128,7 @@ gulp.task('deploy', function () {
         region : 'eu-west-1',
         bucket : 'jockangiftersig.se'
       },
-      { /*headers: {'Cache-Control': 'max-age=315360000, no-transform, public'}*/ }
+      { gzippedOnly: true /*headers: {'Cache-Control': 'max-age=315360000, no-transform, public'}*/ }
     ));
 });
 
