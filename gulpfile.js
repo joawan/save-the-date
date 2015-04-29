@@ -38,8 +38,10 @@ gulp.task('html', ['styles'], function () {
     .pipe(assets)
     .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.css', $.csso()))
+    .pipe($.rev())
     .pipe(assets.restore())
     .pipe($.useref())
+    .pipe($.revReplace())
     .pipe($.if('*.html', $.minifyHtml({conditionals: true, loose: true})))
     .pipe(gulp.dest('dist'));
 });
@@ -128,7 +130,7 @@ gulp.task('deploy', function () {
         region : 'eu-west-1',
         bucket : 'jockangiftersig.se'
       },
-      { gzippedOnly: true /*headers: {'Cache-Control': 'max-age=315360000, no-transform, public'}*/ }
+      { gzippedOnly: true, headers: {'Cache-Control': 'max-age=315360000, no-transform, public'} }
     ));
 });
 
