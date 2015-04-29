@@ -1,0 +1,19 @@
+.main {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.content-block * {
+  display: block;
+}
+
+.flex-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.flex-item {
+    width: 14em;
+    margin: 1em;
+}
