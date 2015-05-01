@@ -4,16 +4,26 @@ body {
   color: #333;
 }
 
-.font-big {
-  font-size: 1.5em;
+h1, h2, h3 {
+    font-family: 'Permanent Marker';
 }
 
-.font-biggest {
-  font-size: 2em;
+h1 {
+    font-size: 3em;
+    @media (max-width: 450px) {
+        font-size: 2.5em;
+    }
+}
+
+h2 {
+    font-size: 2em;
+    @media (max-width: 450px) {
+        font-size: 1.5em;
+    }
 }
 
 .nowrap {
-  white-space: nowrap;
+    white-space: nowrap;
 }
 
 .uc {
