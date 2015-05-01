@@ -17,3 +17,15 @@
     width: 17em;
     padding: 1em;
 }
+
+.img {
+    width: 100%;
+}
+
+.rotate {
+    transform: rotate(7deg) translateX(-0.5em);
+}
+
+.brd {
+    border: 1px solid #333;
+}
